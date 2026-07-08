@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexaForge AI | Plateforme de Création de Contenu par Intelligence Artificielle</title>
+  <meta name="description" content="NexaForge AI est une plateforme tout-en-un de génération de contenu par IA — images, vidéos et voix — avec des crédits prépayés, un espace de stockage et des outils puissants pour créateurs et agences." />
+  <meta name="author" content="NexaForge AI" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="NexaForge AI | Plateforme de Création IA" />
+  <meta property="og:description" content="Créez des images, vidéos et voix avec l'IA. Une seule plateforme, un seul solde, des possibilités infinies." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="NexaForge AI" />
+
+  <!-- Favicon SVG inline -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%238B5CF6'/><stop offset='100%25' stop-color='%23EC4899'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='url(%23g)'/><text x='50' y='68' font-size='55' font-weight='800' text-anchor='middle' fill='white' font-family='sans-serif'>N</text></svg>" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+  
+  <!-- Supabase JS Library pour la Marque Blanche -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+</head>
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">N</div>
+        NexaForge
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#features">Fonctionnalités</a>
+        <a href="#how-it-works">Comment ça marche</a>
+        <a href="#pricing">Tarifs</a>
+        <a href="#faq">FAQ</a>
+        <a href="#pricing" class="nav-cta">Commencer</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Menu de navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO SECTION ===================== -->
+  <section class="hero" id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-blob hero-blob-3"></div>
+
+    <div class="container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Plateforme IA — Nouvelle Génération
+      </div>
+
+      <h1 class="hero-title">
+        Créez du contenu<br />
+        <span class="text-gradient highlight">extraordinaire</span> avec l'IA
+      </h1>
+
+      <p class="hero-subtitle">
+        Images, vidéos et voix — générés par intelligence artificielle dans un seul espace de travail unifié. 
+        Un solde unique, un historique centralisé, des possibilités infinies.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#pricing" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Commencer maintenant
+        </a>
+        <a href="#features" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          Découvrir les fonctionnalités
+        </a>
+      </div>
+
+      <!-- Hero Visual / Mockup -->
+      <div class="hero-visual">
+        <div class="hero-visual-card">
+          <div class="hero-mockup">
+            <div class="hero-mockup-header">
+              <span class="mockup-dot red"></span>
+              <span class="mockup-dot yellow"></span>
+              <span class="mockup-dot green"></span>
+              <span class="mockup-url">nexaforge.ai / workspace</span>
+            </div>
+            <div class="hero-mockup-body">
+              <div class="mockup-preview">
+                <span class="mockup-icon">🎨</span>
+                <span class="mockup-label">Génération d'images</span>
+              </div>
+              <div class="mockup-preview">
+                <span class="mockup-icon">🎬</span>
+                <span class="mockup-label">Création vidéo</span>
+              </div>
+              <div class="mockup-preview">
+                <span class="mockup-icon">🎙️</span>
+                <span class="mockup-label">Synthèse vocale</span>
+              </div>
+              <div class="mockup-preview">
+                <span class="mockup-icon">✨</span>
+                <span class="mockup-label">Espace unifié IA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STATS SECTION ===================== -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item animate-on-scroll">
+          <div class="stat-number" data-target="50">0+</div>
+          <div class="stat-label">Modèles IA disponibles</div>
+        </div>
+        <div class="stat-item animate-on-scroll">
+          <div class="stat-number" data-target="10000">0+</div>
+          <div class="stat-label">Créations générées</div>
+        </div>
+        <div class="stat-item animate-on-scroll">
+          <div class="stat-number" data-target="2500">0+</div>
+          <div class="stat-label">Utilisateurs actifs</div>
+        </div>
+        <div class="stat-item animate-on-scroll">
+          <div class="stat-number">99.9%</div>
+          <div class="stat-label">Disponibilité garantie</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FEATURES SECTION ===================== -->
+  <section class="section features" id="features">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          Fonctionnalités
+        </span>
+        <h2 class="section-title">Tout ce dont vous avez besoin,<br /><span class="text-gradient">dans un seul espace</span></h2>
+        <p class="section-subtitle mx-auto">
+          Accédez à des dizaines de modèles IA de pointe pour la création d'images, de vidéos et de voix, le tout depuis une interface unifiée et intuitive.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon purple">🎨</div>
+          <h3>Génération d'Images IA</h3>
+          <p>Créez des visuels époustouflants — photos produits, illustrations, designs de marque — en quelques secondes grâce à des modèles IA de dernière génération.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon pink">🎬</div>
+          <h3>Création Vidéo IA</h3>
+          <p>Transformez vos idées en clips vidéo professionnels. Du prompt texte à la vidéo, en passant par l'image-vers-vidéo avec multiples styles et effets.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon gold">🎙️</div>
+          <h3>Synthèse Vocale IA</h3>
+          <p>Générez des voix-off réalistes et naturelles pour vos projets. Choisissez parmi des dizaines de voix, langues et styles pour un rendu professionnel.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon emerald">💳</div>
+          <h3>Solde Unique de Crédits</h3>
+          <p>Un seul portefeuille de crédits utilisable sur tous les types de génération. Pas d'abonnement — achetez des crédits et utilisez-les comme bon vous semble.</p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon cyan">📁</div>
+          <h3>Historique & Stockage</h3>
+          <p>Retrouvez toutes vos créations dans un historique centralisé. Téléchargez, réutilisez et gérez vos médias depuis un seul tableau de bord intuitif.</p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card animate-on-scroll">
+          <div class="feature-icon rose">🚀</div>
+          <h3>Catalogue de Modèles</h3>
+          <p>Explorez notre catalogue vivant de modèles IA. Chaque modèle est optimisé pour des cas d'usage spécifiques — art, publicité, narration et plus encore.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Comment ça marche
+        </span>
+        <h2 class="section-title">Commencez en <span class="text-gradient">3 étapes simples</span></h2>
+        <p class="section-subtitle mx-auto">
+          Pas de configuration complexe. Achetez des crédits, choisissez un modèle IA et commencez à créer immédiatement.
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card animate-on-scroll">
+          <div class="step-number">1</div>
+          <h3>Achetez des Crédits</h3>
+          <p>Choisissez un pack de crédits adapté à vos besoins. Paiement sécurisé via PayPal. Vos crédits n'expirent jamais.</p>
+        </div>
+
+        <div class="step-card animate-on-scroll">
+          <div class="step-number">2</div>
+          <h3>Choisissez un Modèle</h3>
+          <p>Parcourez notre catalogue de modèles IA et sélectionnez celui qui correspond à votre projet — image, vidéo ou voix.</p>
+        </div>
+
+        <div class="step-card animate-on-scroll">
+          <div class="step-number">3</div>
+          <h3>Créez & Téléchargez</h3>
+          <p>Décrivez votre vision, lancez la génération et récupérez vos créations en haute qualité. C'est aussi simple que ça.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRICING SECTION ===================== -->
+  <section class="section pricing" id="pricing">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Tarifs
+        </span>
+        <h2 class="section-title">Des crédits simples,<br /><span class="text-gradient">sans abonnement</span></h2>
+        <p class="section-subtitle mx-auto">
+          Achetez des crédits prépayés et utilisez-les à votre rythme. Pas de frais cachés, pas d'engagement. Les crédits n'expirent jamais.
+        </p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Starter -->
+        <div class="pricing-card animate-on-scroll">
+          <div class="pricing-name">Starter</div>
+          <div class="pricing-credits">500 crédits</div>
+          <div class="pricing-amount">
+            <span class="pricing-currency">$</span>
+            <span class="pricing-value">5</span>
+            <span class="pricing-period">USD</span>
+          </div>
+          <div class="pricing-features">
+            <div class="pricing-feature">
+              <span class="check">✓</span> 500 crédits IA
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Images, vidéos & voix
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Tous les modèles inclus
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Crédits sans expiration
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Historique de génération
+            </div>
+          </div>
+          <form class="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick" />
+            <input type="hidden" name="business" id="paypal-business-starter" value="ismailman35@gmail.com" />
+            <input type="hidden" name="item_name" value="NexaForge AI - Starter Pack (500 Credits)" />
+            <input type="hidden" name="amount" id="price-starter-input" value="5.00" />
+            <input type="hidden" name="currency_code" value="USD" />
+            <input type="hidden" name="no_shipping" value="1" />
+            <input type="hidden" name="lc" value="FR" />
+            <input type="hidden" name="return" value="https://nexaforgeai.netlify.app/payment-success.html" />
+            <input type="hidden" name="cancel_return" value="https://nexaforgeai.netlify.app/index.html#pricing" />
+            <button type="submit" class="pricing-btn pricing-btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 2.23A.773.773 0 0 1 5.706 1.6h6.397c2.116 0 3.632.527 4.51 1.565.878 1.04 1.153 2.462.82 4.227l-.012.063v.031c-.44 2.857-1.963 4.628-4.476 5.378a7.78 7.78 0 0 1-2.306.302H8.863a.773.773 0 0 0-.762.633L7.076 21.337z"/><path d="M18.634 7.76c-.025.166-.054.338-.089.517-.895 4.596-3.953 6.185-7.862 6.185h-1.99a.968.968 0 0 0-.956.82l-1.018 6.45-.288 1.828a.51.51 0 0 0 .504.59h3.538a.85.85 0 0 0 .84-.72l.035-.178.666-4.218.043-.232a.85.85 0 0 1 .84-.72h.528c3.42 0 6.098-1.39 6.88-5.41.327-1.68.158-3.08-.708-4.064a3.374 3.374 0 0 0-.963-.848z"/></svg>
+              Payer avec PayPal
+            </button>
+          </form>
+        </div>
+
+        <!-- Standard -->
+        <div class="pricing-card animate-on-scroll">
+          <div class="pricing-name">Standard</div>
+          <div class="pricing-credits">2 000 crédits</div>
+          <div class="pricing-amount">
+            <span class="pricing-currency">$</span>
+            <span class="pricing-value">18</span>
+            <span class="pricing-period">USD</span>
+          </div>
+          <div class="pricing-features">
+            <div class="pricing-feature">
+              <span class="check">✓</span> 2 000 crédits IA
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Images, vidéos & voix
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Tous les modèles inclus
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Crédits sans expiration
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Historique de génération
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Support prioritaire
+            </div>
+          </div>
+          <form class="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick" />
+            <input type="hidden" name="business" id="paypal-business-standard" value="ismailman35@gmail.com" />
+            <input type="hidden" name="item_name" value="NexaForge AI - Standard Pack (2000 Credits)" />
+            <input type="hidden" name="amount" id="price-standard-input" value="18.00" />
+            <input type="hidden" name="currency_code" value="USD" />
+            <input type="hidden" name="no_shipping" value="1" />
+            <input type="hidden" name="lc" value="FR" />
+            <input type="hidden" name="return" value="https://nexaforgeai.netlify.app/payment-success.html" />
+            <input type="hidden" name="cancel_return" value="https://nexaforgeai.netlify.app/index.html#pricing" />
+            <button type="submit" class="pricing-btn pricing-btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 2.23A.773.773 0 0 1 5.706 1.6h6.397c2.116 0 3.632.527 4.51 1.565.878 1.04 1.153 2.462.82 4.227l-.012.063v.031c-.44 2.857-1.963 4.628-4.476 5.378a7.78 7.78 0 0 1-2.306.302H8.863a.773.773 0 0 0-.762.633L7.076 21.337z"/><path d="M18.634 7.76c-.025.166-.054.338-.089.517-.895 4.596-3.953 6.185-7.862 6.185h-1.99a.968.968 0 0 0-.956.82l-1.018 6.45-.288 1.828a.51.51 0 0 0 .504.59h3.538a.85.85 0 0 0 .84-.72l.035-.178.666-4.218.043-.232a.85.85 0 0 1 .84-.72h.528c3.42 0 6.098-1.39 6.88-5.41.327-1.68.158-3.08-.708-4.064a3.374 3.374 0 0 0-.963-.848z"/></svg>
+              Payer avec PayPal
+            </button>
+          </form>
+        </div>
+
+        <!-- Pro (Featured) -->
+        <div class="pricing-card featured animate-on-scroll">
+          <span class="pricing-popular">⭐ Le Plus Populaire</span>
+          <div class="pricing-name">Pro</div>
+          <div class="pricing-credits">4 500 crédits</div>
+          <div class="pricing-amount">
+            <span class="pricing-currency">$</span>
+            <span class="pricing-value">40</span>
+            <span class="pricing-period">USD</span>
+          </div>
+          <div class="pricing-features">
+            <div class="pricing-feature">
+              <span class="check">✓</span> 4 500 crédits IA
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Images, vidéos & voix
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Tous les modèles inclus
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Crédits sans expiration
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Historique illimité
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Support prioritaire 24/7
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Accès aux modèles premium
+            </div>
+          </div>
+          <form class="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick" />
+            <input type="hidden" name="business" id="paypal-business-pro" value="ismailman35@gmail.com" />
+            <input type="hidden" name="item_name" value="NexaForge AI - Pro Pack (4500 Credits)" />
+            <input type="hidden" name="amount" id="price-pro-input" value="40.00" />
+            <input type="hidden" name="currency_code" value="USD" />
+            <input type="hidden" name="no_shipping" value="1" />
+            <input type="hidden" name="lc" value="FR" />
+            <input type="hidden" name="return" value="https://nexaforgeai.netlify.app/payment-success.html" />
+            <input type="hidden" name="cancel_return" value="https://nexaforgeai.netlify.app/index.html#pricing" />
+            <button type="submit" class="pricing-btn pricing-btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 2.23A.773.773 0 0 1 5.706 1.6h6.397c2.116 0 3.632.527 4.51 1.565.878 1.04 1.153 2.462.82 4.227l-.012.063v.031c-.44 2.857-1.963 4.628-4.476 5.378a7.78 7.78 0 0 1-2.306.302H8.863a.773.773 0 0 0-.762.633L7.076 21.337z"/><path d="M18.634 7.76c-.025.166-.054.338-.089.517-.895 4.596-3.953 6.185-7.862 6.185h-1.99a.968.968 0 0 0-.956.82l-1.018 6.45-.288 1.828a.51.51 0 0 0 .504.59h3.538a.85.85 0 0 0 .84-.72l.035-.178.666-4.218.043-.232a.85.85 0 0 1 .84-.72h.528c3.42 0 6.098-1.39 6.88-5.41.327-1.68.158-3.08-.708-4.064a3.374 3.374 0 0 0-.963-.848z"/></svg>
+              Payer avec PayPal
+            </button>
+          </form>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="pricing-card animate-on-scroll">
+          <div class="pricing-name">Enterprise</div>
+          <div class="pricing-credits">10 000 crédits</div>
+          <div class="pricing-amount">
+            <span class="pricing-currency">$</span>
+            <span class="pricing-value">80</span>
+            <span class="pricing-period">USD</span>
+          </div>
+          <div class="pricing-features">
+            <div class="pricing-feature">
+              <span class="check">✓</span> 10 000 crédits IA
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Images, vidéos & voix
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Tous les modèles inclus
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Crédits sans expiration
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Historique illimité
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Support dédié 24/7
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> Accès aux modèles premium
+            </div>
+            <div class="pricing-feature">
+              <span class="check">✓</span> API d'intégration
+            </div>
+          </div>
+          <form class="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick" />
+            <input type="hidden" name="business" id="paypal-business-enterprise" value="ismailman35@gmail.com" />
+            <input type="hidden" name="item_name" value="NexaForge AI - Enterprise Pack (10000 Credits)" />
+            <input type="hidden" name="amount" id="price-enterprise-input" value="80.00" />
+            <input type="hidden" name="currency_code" value="USD" />
+            <input type="hidden" name="no_shipping" value="1" />
+            <input type="hidden" name="lc" value="FR" />
+            <input type="hidden" name="return" value="https://nexaforgeai.netlify.app/payment-success.html" />
+            <input type="hidden" name="cancel_return" value="https://nexaforgeai.netlify.app/index.html#pricing" />
+            <button type="submit" class="pricing-btn pricing-btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 2.23A.773.773 0 0 1 5.706 1.6h6.397c2.116 0 3.632.527 4.51 1.565.878 1.04 1.153 2.462.82 4.227l-.012.063v.031c-.44 2.857-1.963 4.628-4.476 5.378a7.78 7.78 0 0 1-2.306.302H8.863a.773.773 0 0 0-.762.633L7.076 21.337z"/><path d="M18.634 7.76c-.025.166-.054.338-.089.517-.895 4.596-3.953 6.185-7.862 6.185h-1.99a.968.968 0 0 0-.956.82l-1.018 6.45-.288 1.828a.51.51 0 0 0 .504.59h3.538a.85.85 0 0 0 .84-.72l.035-.178.666-4.218.043-.232a.85.85 0 0 1 .84-.72h.528c3.42 0 6.098-1.39 6.88-5.41.327-1.68.158-3.08-.708-4.064a3.374 3.374 0 0 0-.963-.848z"/></svg>
+              Payer avec PayPal
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <p class="text-center" style="margin-top: 24px; font-size: 0.85rem; color: var(--text-muted);">
+        💡 Les générations échouées sont automatiquement remboursées en crédits. Paiement 100% sécurisé via PayPal.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== TESTIMONIALS ===================== -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Témoignages
+        </span>
+        <h2 class="section-title">Ce que disent <span class="text-gradient">nos utilisateurs</span></h2>
+        <p class="section-subtitle mx-auto">
+          Des milliers de créateurs et d'entreprises font confiance à NexaForge AI pour leurs projets de contenu.
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card animate-on-scroll">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "NexaForge a complètement transformé mon workflow créatif. La qualité des images générées est incroyable et le système de crédits est très flexible."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">S</div>
+            <div class="testimonial-info">
+              <span class="testimonial-name">Sophie Martin</span>
+              <span class="testimonial-role">Directrice Artistique</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card animate-on-scroll">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Le meilleur investissement pour mon agence. Les vidéos IA sont d'une qualité professionnelle et le support est réactif. Je recommande à 100%."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">K</div>
+            <div class="testimonial-info">
+              <span class="testimonial-name">Karim Benali</span>
+              <span class="testimonial-role">Fondateur d'agence digitale</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card animate-on-scroll">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "J'utilise la synthèse vocale pour mes podcasts et vidéos YouTube. La variété des voix disponibles et la qualité sont impressionnantes."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">L</div>
+            <div class="testimonial-info">
+              <span class="testimonial-name">Laura Chen</span>
+              <span class="testimonial-role">Créatrice de contenu</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ SECTION ===================== -->
+  <section class="section" id="faq" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          FAQ
+        </span>
+        <h2 class="section-title">Questions <span class="text-gradient">fréquentes</span></h2>
+        <p class="section-subtitle mx-auto">
+          Tout ce que vous devez savoir sur NexaForge AI et notre système de crédits.
+        </p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Qu'est-ce que NexaForge AI ?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              NexaForge AI est une plateforme tout-en-un de génération de contenu par intelligence artificielle. Vous pouvez créer des images, des vidéos et des voix-off à partir de simples descriptions textuelles, le tout depuis un espace de travail unifié avec un seul solde de crédits.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Comment fonctionne le système de crédits ?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Vous achetez des crédits prépayés via PayPal et vous les dépensez sur des opérations IA spécifiques. Le coût varie selon le modèle et les paramètres choisis. Les crédits n'expirent jamais et les générations échouées sont automatiquement remboursées.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Les crédits expirent-ils ?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Non. Vos crédits sont prépayés et n'expirent jamais. Vous pouvez les utiliser à votre propre rythme, sans aucune pression de temps.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Quels modes de paiement acceptez-vous ?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Nous acceptons exclusivement les paiements via PayPal. C'est un moyen de paiement sécurisé, rapide et disponible dans le monde entier. Vous pouvez payer avec votre solde PayPal ou votre carte bancaire liée à votre compte PayPal.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Quels types de contenu puis-je créer ?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Vous pouvez créer trois types de contenu : des images (photos produits, illustrations, designs), des vidéos (clips, animations, transitions) et des voix-off (narration, podcasts, doublage). Tout est accessible depuis notre interface unifiée avec plus de 50 modèles IA.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Puis-je utiliser le contenu généré à des fins commerciales ?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Oui, absolument ! Tout le contenu que vous générez avec NexaForge AI vous appartient. Vous pouvez l'utiliser à des fins personnelles et commerciales sans restriction — pour vos réseaux sociaux, sites web, publicités, vidéos et plus encore.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA SECTION ===================== -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card animate-on-scroll">
+        <h2 class="cta-title">Prêt à <span class="text-gradient">forger votre vision</span> ?</h2>
+        <p class="cta-subtitle">
+          Rejoignez des milliers de créateurs qui utilisent NexaForge AI pour transformer leurs idées en réalité. Commencez dès aujourd'hui avec seulement 5$.
+        </p>
+        <div class="hero-actions" style="justify-content: center;">
+          <a href="#pricing" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Obtenir des crédits
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <div class="footer-brand-icon">N</div>
+            NexaForge AI
+          </div>
+          <p class="footer-desc">
+            La plateforme de création de contenu IA tout-en-un. Images, vidéos et voix — un seul espace, des possibilités infinies.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Produit</h4>
+          <a href="#features">Fonctionnalités</a>
+          <a href="#pricing">Tarifs</a>
+          <a href="#how-it-works">Comment ça marche</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Support</h4>
+          <a href="mailto:contact@nexaforge.ai">Contact</a>
+          <a href="#faq">Centre d'aide</a>
+          <a href="#">Documentation</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Légal</h4>
+          <a href="#">Politique de confidentialité</a>
+          <a href="#">Conditions d'utilisation</a>
+          <a href="#">Mentions légales</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2025 NexaForge AI. Tous droits réservés.</span>
+        <div class="footer-socials">
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Instagram">📷</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+
+  <!-- Logique Marque Blanche -->
+  <script>
+    async function loadStorefront() {
+      if (typeof supabaseClient === 'undefined') return;
+
+      const urlParams = new URLSearchParams(window.location.search);
+      let subdomain = urlParams.get('store');
+      
+      if (!subdomain) {
+        const hostname = window.location.hostname;
+        if (hostname.includes('nexaforge.ai') && hostname !== 'nexaforge.ai' && hostname !== 'www.nexaforge.ai') {
+          subdomain = hostname.split('.')[0];
+        }
+      }
+
+      if (subdomain) {
+        try {
+          const response = await fetch(`https://nexaforge-backend.onrender.com/api/storefront/${subdomain}`);
+          const { success, store } = await response.json();
+
+          if (success && store) {
+            console.log("Marque Blanche activée:", store.brand_name);
+            document.title = store.brand_name + " | AI Generation";
+            document.documentElement.style.setProperty('--primary', store.brand_color);
+            
+            document.querySelectorAll('.nav-logo').forEach(el => {
+              el.innerHTML = `<div class="nav-logo-icon" style="background:${store.brand_color}">${store.brand_name.charAt(0)}</div> ${store.brand_name}`;
+            });
+            
+            // Mise à jour de certains textes clés (sans casser les events)
+            document.querySelectorAll('span, p, h1, h2, h3').forEach(el => {
+              if (el.children.length === 0 && el.textContent.includes('NexaForge')) {
+                el.textContent = el.textContent.replace(/NexaForge AI|NexaForge/g, store.brand_name);
+              }
+            });
+
+            // Mise à jour des emails PayPal dans les formulaires
+            if (store.paypal_email) {
+              document.getElementById('paypal-business-starter').value = store.paypal_email;
+              document.getElementById('paypal-business-standard').value = store.paypal_email;
+              document.getElementById('paypal-business-pro').value = store.paypal_email;
+              document.getElementById('paypal-business-enterprise').value = store.paypal_email;
+            }
+
+            // Mise à jour des tarifs affichés et des montants PayPal
+            if (store.price_starter) {
+              document.querySelectorAll('.pricing-value')[0].textContent = store.price_starter;
+              document.getElementById('price-starter-input').value = store.price_starter;
+            }
+            if (store.price_standard) {
+              document.querySelectorAll('.pricing-value')[1].textContent = store.price_standard;
+              document.getElementById('price-standard-input').value = store.price_standard;
+            }
+            if (store.price_pro) {
+              document.querySelectorAll('.pricing-value')[2].textContent = store.price_pro;
+              document.getElementById('price-pro-input').value = store.price_pro;
+            }
+          }
+        } catch (e) {
+          console.error("Erreur chargement storefront", e);
+        }
+      }
+    }
+    document.addEventListener('DOMContentLoaded', loadStorefront);
+  </script>
+</body>
+</html>

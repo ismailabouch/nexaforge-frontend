@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paiement confirmé | NexaForge AI</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <style>
+    body { background: var(--bg-primary); display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .confirm-card {
+      background: var(--bg-card); padding: 50px; border-radius: 24px;
+      border: 1px solid var(--border-subtle); max-width: 500px; text-align: center;
+      box-shadow: 0 10px 40px rgba(139,92,246,0.15);
+    }
+    .confirm-icon { font-size: 4rem; margin-bottom: 20px; }
+    .confirm-title { font-size: 1.8rem; margin-bottom: 10px; }
+    .confirm-subtitle { color: var(--text-secondary); margin-bottom: 30px; }
+    .confirm-details { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 25px; text-align: left; }
+    .confirm-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .confirm-row:last-child { border-bottom: none; }
+    .confirm-label { color: var(--text-muted); }
+    .confirm-value { color: white; font-weight: 600; }
+    .spinner { border: 3px solid rgba(255,255,255,0.1); border-top: 3px solid var(--primary); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto 15px; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="confirm-card">
+    <div id="loading-state">
+      <div class="spinner"></div>
+      <h2 class="confirm-title">Vérification du paiement...</h2>
+      <p class="confirm-subtitle">Veuillez patienter pendant que nous ajoutons vos crédits.</p>
+    </div>
+    
+    <div id="success-state" style="display: none;">
+      <div class="confirm-icon">🎉</div>
+      <h2 class="confirm-title">Paiement confirmé !</h2>
+      <p class="confirm-subtitle">Vos crédits ont été ajoutés à votre compte.</p>
+      <div class="confirm-details">
+        <div class="confirm-row">
+          <span class="confirm-label">Pack acheté</span>
+          <span class="confirm-value" id="pack-name">—</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-label">Crédits ajoutés</span>
+          <span class="confirm-value" id="credits-added" style="color: #10B981;">—</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-label">Nouveau solde</span>
+          <span class="confirm-value" id="new-balance">—</span>
+        </div>
+      </div>
+      <a href="workspace.html" class="btn-primary" style="display: inline-flex; text-decoration: none;">Accéder à mon espace →</a>
+    </div>
+
+    <div id="error-state" style="display: none;">
+      <div class="confirm-icon">⚠️</div>
+      <h2 class="confirm-title">Un problème est survenu</h2>
+      <p class="confirm-subtitle" id="error-msg">Si vous avez été débité, contactez le support.</p>
+      <a href="index.html" class="btn-secondary" style="display: inline-flex; text-decoration: none;">Retour à l'accueil</a>
+    </div>
+  </div>
+
+  <script>
+    async function processPayment() {
+      const params = new URLSearchParams(window.location.search);
+      const txnId = params.get('tx') || params.get('txn_id') || 'manual_' + Date.now();
+      const amount = parseFloat(params.get('amt') || params.get('mc_gross') || '0');
+      const itemName = params.get('item_name') || 'Pack NexaForge';
+
+      // Récupérer l'utilisateur connecté
+      if (!supabaseClient) {
+        showError("Configuration Supabase manquante.");
+        return;
+      }
+
+      const { data: { session } } = await supabaseClient.auth.getSession();
+      if (!session) {
+        showError("Vous devez être connecté pour valider votre achat. Connectez-vous dans l'Espace de travail puis revenez sur cette page.");
+        return;
+      }
+
+      const userId = session.user.id;
+
+      try {
+        const response = await fetch('https://nexaforge-backend.onrender.com/api/payment/confirm', {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${session.access_token}`
+          },
+          body: JSON.stringify({ userId, txnId, amount, itemName })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          document.getElementById('loading-state').style.display = 'none';
+          document.getElementById('success-state').style.display = 'block';
+          document.getElementById('pack-name').textContent = itemName;
+          document.getElementById('credits-added').textContent = '+' + data.creditsAdded;
+          document.getElementById('new-balance').textContent = data.newBalance + ' crédits';
+        } else {
+          showError(data.error || "Erreur inconnue.");
+        }
+      } catch (err) {
+        showError("Impossible de contacter le serveur. Réessayez dans quelques instants.");
+      }
+    }
+
+    function showError(msg) {
+      document.getElementById('loading-state').style.display = 'none';
+      document.getElementById('error-state').style.display = 'block';
+      document.getElementById('error-msg').textContent = msg;
+    }
+
+    processPayment();
+  </script>
+</body>
+</html>
