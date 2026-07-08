@@ -24,7 +24,7 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
   
-  <!-- Supabase JS Library pour la Marque Blanche -->
+  <!-- Supabase JS Library pour la Revendeur -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/config.js"></script>
 </head>
@@ -40,7 +40,7 @@
 
       <div class="nav-links" id="navLinks">
         <a href="features.html">Fonctionnalités</a>
-        <a href="white-label.html">Marque Blanche</a>
+        <a href="white-label.html">Revendeur</a>
         <a href="#pricing">Tarifs</a>
         <a href="about.html">À Propos</a>
         <a href="contact.html">Contact</a>
@@ -646,7 +646,7 @@
           <h4>Produit</h4>
           <a href="features.html">Fonctionnalités</a>
           <a href="#pricing">Tarifs</a>
-          <a href="white-label.html">Marque Blanche</a>
+          <a href="white-label.html">Revendeur</a>
           <a href="#faq">FAQ</a>
         </div>
 
@@ -678,7 +678,7 @@
   <!-- JavaScript -->
   <script src="js/main.js"></script>
 
-  <!-- Logique Marque Blanche -->
+  <!-- Logique Revendeur -->
   <script>
     async function loadStorefront() {
       if (typeof supabaseClient === 'undefined') return;
@@ -699,7 +699,7 @@
           const { success, store } = await response.json();
 
           if (success && store) {
-            console.log("Marque Blanche activée:", store.brand_name);
+            console.log("Revendeur activée:", store.brand_name);
             document.title = store.brand_name + " | AI Generation";
             document.documentElement.style.setProperty('--primary', store.brand_color);
             
