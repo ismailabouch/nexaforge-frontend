@@ -248,26 +248,9 @@
             <div class="contact-method">
               <div class="contact-icon">✉️</div>
               <div>
-                <h3>Support & Ventes</h3>
-                <a href="mailto:contact@nexaforge.ai">contact@nexaforge.ai</a>
+                <h3>Email</h3>
+                <a href="mailto:tobusalsi132@gmail.com">tobusalsi132@gmail.com</a>
                 <p>Réponse sous 24h ouvrées</p>
-              </div>
-            </div>
-            
-            <div class="contact-method">
-              <div class="contact-icon">📍</div>
-              <div>
-                <h3>Bureaux</h3>
-                <p>Station F, 5 Parvis Alan Turing<br>75013 Paris, France</p>
-              </div>
-            </div>
-
-            <div class="contact-method">
-              <div class="contact-icon">💬</div>
-              <div>
-                <h3>Communauté</h3>
-                <a href="#">Rejoignez notre Discord</a>
-                <p>Échangez avec d'autres créateurs</p>
               </div>
             </div>
           </div>
@@ -275,7 +258,11 @@
 
         <!-- Contact Form -->
         <div class="contact-form-container">
-          <form class="contact-form" onsubmit="event.preventDefault(); alert('Message envoyé avec succès !');">
+          <form class="contact-form" action="https://formsubmit.co/tobusalsi132@gmail.com" method="POST">
+            <!-- Redirection URL (Optionnel) -->
+            <input type="hidden" name="_next" value="https://nexaforgeai.netlify.app/contact.html?success=true">
+            <!-- Prevent Captcha (Optionnel) -->
+            <input type="hidden" name="_captcha" value="false">
             <div class="form-group">
               <label for="name">Nom complet</label>
               <input type="text" id="name" class="form-control" placeholder="Jean Dupont" required>
@@ -286,17 +273,7 @@
               <input type="email" id="email" class="form-control" placeholder="jean@exemple.com" required>
             </div>
             
-            <div class="form-group">
-              <label for="subject">Sujet</label>
-              <select id="subject" class="form-control" required style="appearance: none;">
-                <option value="" disabled selected>Sélectionnez un sujet</option>
-                <option value="support">Support technique</option>
-                <option value="sales">Question commerciale</option>
-                <option value="partnership">Partenariat</option>
-                <option value="other">Autre</option>
-              </select>
-            </div>
-            
+
             <div class="form-group">
               <label for="message">Message</label>
               <textarea id="message" class="form-control" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
