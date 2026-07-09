@@ -148,15 +148,96 @@
     </div>
   </section>
 
-  <section style="padding: 100px 0;">
-    <div class="container text-center">
-      <div class="cta-card">
-        <h2 style="font-size: 2.5rem; margin-bottom: 20px; font-family: 'Space Grotesk', sans-serif;">Prêt à lancer votre agence IA ?</h2>
-        <p style="color: #9CA3AF; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">Rejoignez les entrepreneurs qui génèrent déjà des revenus récurrents avec notre solution clé en main.</p>
-        <a href="contact.html" class="nav-cta" style="font-size: 1.1rem; padding: 15px 35px; display: inline-block;">Devenir Revendeur</a>
+  <!-- ===================== PRICING REVENDEUR ===================== -->
+  <section class="section pricing" id="pricing-revendeur" style="padding-top: 50px;">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-title">Lancez votre <span class="text-gradient">Agence IA</span> aujourd'hui</h2>
+        <p class="section-subtitle mx-auto">Choisissez votre abonnement Revendeur et commencez à générer des revenus 100% à vous.</p>
+        
+        <!-- Toggle Mensuel / Annuel -->
+        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin: 40px 0;">
+          <span id="label-monthly" style="color: #fff; font-weight: 600;">Mensuel</span>
+          <label style="position: relative; display: inline-block; width: 60px; height: 34px;">
+            <input type="checkbox" id="billing-toggle" style="opacity: 0; width: 0; height: 0;">
+            <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(139, 92, 246, 0.2); border: 1px solid var(--primary); transition: .4s; border-radius: 34px;">
+              <span id="toggle-slider" style="position: absolute; content: ''; height: 26px; width: 26px; left: 4px; bottom: 3px; background-color: var(--primary); transition: .4s; border-radius: 50%;"></span>
+            </span>
+          </label>
+          <span id="label-yearly" style="color: #94a3b8; font-weight: 600;">Annuel <span style="color: var(--emerald); font-size: 0.8rem; background: rgba(16, 185, 129, 0.1); padding: 2px 8px; border-radius: 12px; margin-left: 5px;">-20%</span></span>
+        </div>
+      </div>
+
+      <div class="pricing-grid" style="max-width: 500px; margin: 0 auto; display: block;">
+        <!-- Carte Revendeur Unique -->
+        <div class="pricing-card featured animate-on-scroll">
+          <div class="pricing-header">
+            <h3>Licence Revendeur</h3>
+            <div class="pricing-price">
+              <span class="currency">€</span>
+              <span class="amount" id="price-amount">97</span>
+              <span class="period" id="price-period">/mois</span>
+            </div>
+            <p>Tout ce dont vous avez besoin pour lancer et gérer votre propre SaaS IA.</p>
+          </div>
+          <div class="pricing-features">
+            <ul>
+              <li><span class="feature-check">✓</span> <strong>100% des revenus</strong> sur votre PayPal</li>
+              <li><span class="feature-check">✓</span> Domaine personnalisé ou Sous-domaine</li>
+              <li><span class="feature-check">✓</span> Couleurs et Logo de votre marque</li>
+              <li><span class="feature-check">✓</span> Vous fixez vos propres prix</li>
+              <li><span class="feature-check">✓</span> Génération d'Images, Vidéos, et Voix</li>
+              <li><span class="feature-check">✓</span> Support prioritaire</li>
+            </ul>
+          </div>
+          
+          <!-- Formulaire d'abonnement (Simulation PayPal pour Revendeur) -->
+          <div id="paypal-button-container-reseller" style="margin-top: 30px; text-align: center;">
+            <form action="payment-success.html" method="GET">
+              <input type="hidden" name="plan" id="selected-plan" value="reseller-monthly">
+              <button type="submit" class="btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem; justify-content: center;">
+                S'abonner et Configurer mon Agence
+              </button>
+            </form>
+          </div>
+          <p style="text-align: center; color: #64748b; font-size: 0.85rem; margin-top: 15px;">Annulable à tout moment. Paiement sécurisé.</p>
+        </div>
       </div>
     </div>
   </section>
+
+  <script>
+    // Logique du Toggle Mensuel/Annuel
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('billing-toggle');
+      const slider = document.getElementById('toggle-slider');
+      const priceAmount = document.getElementById('price-amount');
+      const pricePeriod = document.getElementById('price-period');
+      const selectedPlan = document.getElementById('selected-plan');
+      const labelMonthly = document.getElementById('label-monthly');
+      const labelYearly = document.getElementById('label-yearly');
+
+      toggle.addEventListener('change', () => {
+        if (toggle.checked) {
+          // Annuel
+          slider.style.transform = 'translateX(26px)';
+          priceAmount.textContent = '970';
+          pricePeriod.textContent = '/an';
+          selectedPlan.value = 'reseller-yearly';
+          labelYearly.style.color = '#fff';
+          labelMonthly.style.color = '#94a3b8';
+        } else {
+          // Mensuel
+          slider.style.transform = 'translateX(0)';
+          priceAmount.textContent = '97';
+          pricePeriod.textContent = '/mois';
+          selectedPlan.value = 'reseller-monthly';
+          labelMonthly.style.color = '#fff';
+          labelYearly.style.color = '#94a3b8';
+        }
+      });
+    });
+  </script>
 
   <footer class="footer">
     <div class="container">
