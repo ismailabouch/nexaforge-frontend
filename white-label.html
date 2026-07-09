@@ -168,52 +168,110 @@
         </div>
       </div>
 
-      <div class="pricing-grid" style="max-width: 500px; margin: 0 auto; display: block;">
-        <!-- Carte Revendeur Unique -->
-        <div class="pricing-card featured animate-on-scroll">
+      <div class="pricing-grid">
+        <!-- Plan Starter -->
+        <div class="pricing-card animate-on-scroll">
           <div class="pricing-header">
-            <h3>Licence Revendeur</h3>
+            <h3>Starter</h3>
             <div class="pricing-price">
-              <span class="currency">€</span>
-              <span class="amount" id="price-amount">97</span>
-              <span class="period" id="price-period">/mois</span>
+              <span class="currency">$</span>
+              <span class="amount price-amount-starter">5</span>
+              <span class="period">/mois</span>
             </div>
-            <p>Tout ce dont vous avez besoin pour lancer et gérer votre propre SaaS IA.</p>
+            <p>Idéal pour démarrer votre agence IA à petit prix.</p>
           </div>
           <div class="pricing-features">
             <ul>
-              <li><span class="feature-check">✓</span> <strong>100% des revenus</strong> sur votre PayPal</li>
-              <li><span class="feature-check">✓</span> Domaine personnalisé ou Sous-domaine</li>
-              <li><span class="feature-check">✓</span> Couleurs et Logo de votre marque</li>
-              <li><span class="feature-check">✓</span> Vous fixez vos propres prix</li>
-              <li><span class="feature-check">✓</span> Génération d'Images, Vidéos, et Voix</li>
+              <li><span class="feature-check">✓</span> <strong>100% des revenus</strong></li>
+              <li><span class="feature-check">✓</span> Domaine personnalisé</li>
+              <li><span class="feature-check">✓</span> Marque blanche basique</li>
+              <li><span class="feature-check">✓</span> Support par email</li>
+            </ul>
+          </div>
+          <div class="paypal-button-container" style="margin-top: 30px;">
+            <form action="payment-success.html" method="GET">
+              <input type="hidden" name="plan" class="selected-plan-starter" value="starter-monthly">
+              <button type="submit" class="btn-secondary" style="width: 100%; justify-content: center;">Devenir Revendeur</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Plan Standard -->
+        <div class="pricing-card featured animate-on-scroll">
+          <div class="pricing-badge">Populaire</div>
+          <div class="pricing-header">
+            <h3>Standard</h3>
+            <div class="pricing-price">
+              <span class="currency">$</span>
+              <span class="amount price-amount-standard">18</span>
+              <span class="period">/mois</span>
+            </div>
+            <p>Pour les agences en croissance avec plus de besoins.</p>
+          </div>
+          <div class="pricing-features">
+            <ul>
+              <li><span class="feature-check">✓</span> <strong>100% des revenus</strong></li>
+              <li><span class="feature-check">✓</span> Domaine personnalisé</li>
+              <li><span class="feature-check">✓</span> Marque blanche complète</li>
+              <li><span class="feature-check">✓</span> Fixation de vos propres prix</li>
               <li><span class="feature-check">✓</span> Support prioritaire</li>
             </ul>
           </div>
-          
-          <!-- Formulaire d'abonnement (Simulation PayPal pour Revendeur) -->
-          <div id="paypal-button-container-reseller" style="margin-top: 30px; text-align: center;">
+          <div class="paypal-button-container" style="margin-top: 30px;">
             <form action="payment-success.html" method="GET">
-              <input type="hidden" name="plan" id="selected-plan" value="reseller-monthly">
-              <button type="submit" class="btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem; justify-content: center;">
-                S'abonner et Configurer mon Agence
-              </button>
+              <input type="hidden" name="plan" class="selected-plan-standard" value="standard-monthly">
+              <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Devenir Revendeur</button>
             </form>
           </div>
-          <p style="text-align: center; color: #64748b; font-size: 0.85rem; margin-top: 15px;">Annulable à tout moment. Paiement sécurisé.</p>
+        </div>
+
+        <!-- Plan Pro -->
+        <div class="pricing-card animate-on-scroll">
+          <div class="pricing-header">
+            <h3>Pro</h3>
+            <div class="pricing-price">
+              <span class="currency">$</span>
+              <span class="amount price-amount-pro">40</span>
+              <span class="period">/mois</span>
+            </div>
+            <p>La solution ultime pour les grandes agences IA.</p>
+          </div>
+          <div class="pricing-features">
+            <ul>
+              <li><span class="feature-check">✓</span> <strong>100% des revenus</strong></li>
+              <li><span class="feature-check">✓</span> Multimédia (Image/Vidéo/Voix)</li>
+              <li><span class="feature-check">✓</span> API d'intégration personnalisée</li>
+              <li><span class="feature-check">✓</span> Fixation de vos propres prix</li>
+              <li><span class="feature-check">✓</span> Support dédié 24/7</li>
+            </ul>
+          </div>
+          <div class="paypal-button-container" style="margin-top: 30px;">
+            <form action="payment-success.html" method="GET">
+              <input type="hidden" name="plan" class="selected-plan-pro" value="pro-monthly">
+              <button type="submit" class="btn-secondary" style="width: 100%; justify-content: center;">Devenir Revendeur</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <script>
-    // Logique du Toggle Mensuel/Annuel
+    // Logique du Toggle Mensuel/Annuel pour les 3 plans
     document.addEventListener('DOMContentLoaded', () => {
       const toggle = document.getElementById('billing-toggle');
       const slider = document.getElementById('toggle-slider');
-      const priceAmount = document.getElementById('price-amount');
-      const pricePeriod = document.getElementById('price-period');
-      const selectedPlan = document.getElementById('selected-plan');
+      
+      const priceAmountStarter = document.querySelector('.price-amount-starter');
+      const priceAmountStandard = document.querySelector('.price-amount-standard');
+      const priceAmountPro = document.querySelector('.price-amount-pro');
+      
+      const periods = document.querySelectorAll('.period');
+      
+      const planStarter = document.querySelector('.selected-plan-starter');
+      const planStandard = document.querySelector('.selected-plan-standard');
+      const planPro = document.querySelector('.selected-plan-pro');
+      
       const labelMonthly = document.getElementById('label-monthly');
       const labelYearly = document.getElementById('label-yearly');
 
@@ -221,17 +279,31 @@
         if (toggle.checked) {
           // Annuel
           slider.style.transform = 'translateX(26px)';
-          priceAmount.textContent = '970';
-          pricePeriod.textContent = '/an';
-          selectedPlan.value = 'reseller-yearly';
+          priceAmountStarter.textContent = '50';
+          priceAmountStandard.textContent = '180';
+          priceAmountPro.textContent = '400';
+          
+          periods.forEach(p => p.textContent = '/an');
+          
+          planStarter.value = 'starter-yearly';
+          planStandard.value = 'standard-yearly';
+          planPro.value = 'pro-yearly';
+          
           labelYearly.style.color = '#fff';
           labelMonthly.style.color = '#94a3b8';
         } else {
           // Mensuel
           slider.style.transform = 'translateX(0)';
-          priceAmount.textContent = '97';
-          pricePeriod.textContent = '/mois';
-          selectedPlan.value = 'reseller-monthly';
+          priceAmountStarter.textContent = '5';
+          priceAmountStandard.textContent = '18';
+          priceAmountPro.textContent = '40';
+          
+          periods.forEach(p => p.textContent = '/mois');
+          
+          planStarter.value = 'starter-monthly';
+          planStandard.value = 'standard-monthly';
+          planPro.value = 'pro-monthly';
+          
           labelMonthly.style.color = '#fff';
           labelYearly.style.color = '#94a3b8';
         }
